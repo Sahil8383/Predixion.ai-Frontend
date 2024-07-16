@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import axios from "axios";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import {
@@ -13,6 +12,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "./ui/textarea";
 import { toast } from "sonner";
+import axiosClient from "@/lib/axiosClient";
 
 interface TaskFormProps {
   onTaskAdded: () => void;
@@ -26,7 +26,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ onTaskAdded }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post(`https://web-production-5626.up.railway.app/api/tasks`, {
+      await axiosClient.post(`/tasks`, {
         title,
         description,
         status,

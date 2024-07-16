@@ -1,9 +1,9 @@
 'use client'
 
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import TaskItem from './TaskItem';
 import TaskForm from './TaskForm';
+import axiosClient from '@/lib/axiosClient';
 
 interface Task {
   id: number;
@@ -17,7 +17,7 @@ const TaskList: React.FC = () => {
 
   const fetchTasks = async () => {
     try {
-      const response = await axios.get(`https://web-production-5626.up.railway.app/api/tasks`);
+      const response = await axiosClient.get(`/tasks`);
       setTasks(response.data);
     } catch (error) {
       console.error('Error fetching tasks:', error);

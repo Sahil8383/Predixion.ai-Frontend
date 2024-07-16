@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import axios from "axios";
 import { Button } from "./ui/button";
 import {
   Select,
@@ -11,6 +10,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "sonner"
+import axiosClient from "@/lib/axiosClient";
 
 interface TaskItemProps {
   task: {
@@ -33,7 +33,7 @@ const TaskItem: React.FC<TaskItemProps> = ({
   const handleStatusChange = async (newStatus: string) => {
     setStatus(newStatus);
     try {
-      await axios.patch(`https://web-production-5626.up.railway.app/api/tasks/${task.id}`, {
+      await axiosClient.patch(`/tasks/${task.id}`, {
         ...task,
         status: newStatus,
       });
@@ -46,7 +46,7 @@ const TaskItem: React.FC<TaskItemProps> = ({
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`https://web-production-5626.up.railway.app/api/tasks/${task.id}`);
+      await axiosClient.delete(`/tasks/${task.id}`);
       onTaskDeleted();
         toast("Task has been deleted.")
     } catch (error) {
