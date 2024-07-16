@@ -17,7 +17,7 @@ import axiosClient from "@/lib/axiosClient";
 interface TaskFormProps {
   onTaskAdded: () => void;
 }
-
+ 
 const TaskForm: React.FC<TaskFormProps> = ({ onTaskAdded }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -33,7 +33,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ onTaskAdded }) => {
       });
       setTitle("");
       setDescription("");
-      setStatus("todo");
+      setStatus("Todo");
       onTaskAdded();
       toast("Task has been added.");
     } catch (error) {
@@ -42,7 +42,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ onTaskAdded }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4 flex flex-col justify-center items-start w-[500px]">
       <Input
         placeholder="Title"
         value={title}
