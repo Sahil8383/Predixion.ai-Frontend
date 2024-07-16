@@ -17,7 +17,7 @@ const TaskList: React.FC = () => {
 
   const fetchTasks = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/tasks');
+      const response = await axios.get(`https://web-production-5626.up.railway.app/api/tasks`);
       setTasks(response.data);
     } catch (error) {
       console.error('Error fetching tasks:', error);

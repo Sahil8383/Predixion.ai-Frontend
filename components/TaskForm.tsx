@@ -26,7 +26,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ onTaskAdded }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8000/api/tasks", {
+      await axios.post(`https://web-production-5626.up.railway.app/api/tasks`, {
         title,
         description,
         status,

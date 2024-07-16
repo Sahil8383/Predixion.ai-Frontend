@@ -33,7 +33,7 @@ const TaskItem: React.FC<TaskItemProps> = ({
   const handleStatusChange = async (newStatus: string) => {
     setStatus(newStatus);
     try {
-      await axios.patch(`http://localhost:8000/api/tasks/${task.id}`, {
+      await axios.patch(`https://web-production-5626.up.railway.app/api/tasks/${task.id}`, {
         ...task,
         status: newStatus,
       });
@@ -46,7 +46,7 @@ const TaskItem: React.FC<TaskItemProps> = ({
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8000/api/tasks/${task.id}`);
+      await axios.delete(`https://web-production-5626.up.railway.app/api/tasks/${task.id}`);
       onTaskDeleted();
         toast("Task has been deleted.")
     } catch (error) {
